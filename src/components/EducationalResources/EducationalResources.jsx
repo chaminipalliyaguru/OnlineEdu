@@ -1,30 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 // import { Button } from "@material-tailwind/react";
 import Header from '../Header';
-import { gsap } from "gsap";
+import axios from 'axios';
+
 
 function EducationalResources() {
-
-  const animateBox = () => {
-    gsap.to(".box", { x: 100, duration: 1 });
-  };
+  const [users,setUsers] =useState([])
+  useEffect(() => {
+    axios.get('http://localhost:3001/getUsers')
+    .then(users => setUsers(users.data))
+    .catch(err => console.log(err))
+  },[])
 
   return (
-    <div className="flex w-max gap-4">
-        {/* <Header /> */}
-      {/* <Button color="green">color green</Button> */}
-      
-
-
-
-
-  <div>
-    <div className="box" style={{ width: 50, height: 50, background: "blue" }} />
-    <button onClick={animateBox}>Animate</button>
-  </div>
-
-
-      
+    <div>
+      <Header/>
+        {users.length > 0 ? (
+          <table border="1" style={{ width: '50%', margin: 'auto', textAlign: 'left' }}>
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Email</th>
+              </tr>
+          </thead>
+          <tbody>
+            {users.map((item, index) => (
+              <tr key={index}>
+                <td>{item.name}</td>
+                <td>{item.age}</td>
+                <td>{item.email}</td>
+              </tr>
+            ))}
+            </tbody>
+                </table>
+            ) : (
+                <p style={{ textAlign: 'center' }}>No data available</p>
+            )}
+        
     </div>
   )
 }
