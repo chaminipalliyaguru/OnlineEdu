@@ -24,7 +24,7 @@ function Header() {
                     <a href='/News' className='text-white hover:bg-lime-500 hover:text-black rounded-lg p-2'> News</a>
                     <a href='/educationalResources' className='text-white hover:bg-lime-500 hover:text-black rounded-lg p-2'> Educational Resources</a>
                     <a href='/inspirationHub' className='text-white hover:bg-lime-500 hover:text-black rounded-lg p-2'> Inspiration Hub</a>
-                    <a href='/' className='text-white hover:bg-lime-500 hover:text-black rounded-lg p-2'> Help</a>
+                    <a href='/signIn' className='text-white hover:bg-lime-500 hover:text-black rounded-lg p-2'>Sign In</a>
                   </div>
 
                 </div>
